@@ -216,3 +216,18 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# --- Power BI ---
+*.pbi.bak
+*.pbit
+
+# --- Data Files ---
+# Ignore all CSV and Excel files to keep the repo light
+*.csv
+*.xlsx
+*.xls
+*.zip
+
+# --- SQL / Local DB ---
+*.sqlite
+*.db
