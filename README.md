@@ -1,7 +1,7 @@
 # Microsoft Support Intelligence: GitHub Issue Analytics for Developer Experience
 
 ## 🚀 Business Case Study & Summary
-In the GitHub ecosystem, $Developer Retention$ is the primary driver of platform value. As ticket volumes surge, "SLA breaches" (responses taking >24 hours) create significant friction. 
+In the GitHub ecosystem, Developer Retention is the primary driver of platform value. As ticket volumes surge, "SLA breaches" (responses taking >24 hours) create significant friction. 
 - The Problem: High-traffic repositories were experiencing unquantified developer churn due to support latency.
 
 - The Solution: This project engineered an end-to-end analytics pipeline to correlate Operational Efficiency (SLA) with Community Loyalty (Retention).
