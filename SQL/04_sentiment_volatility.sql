@@ -1,15 +1,3 @@
--- ============================================================================
--- Sentiment Volatility Analysis - PostgreSQL Integration
--- GitHub Support Operations Analytics
--- Purpose: Store sentiment metrics and integrate with Star Schema for Tableau
--- Source: Python NLP Pipeline (02_sentiment_volatility_nlp.ipynb)
--- Database: PostgreSQL 12+
--- ============================================================================
-
--- ============================================================================
--- TABLE: fact_sentiment (Populated by Python NLP Pipeline)
--- ============================================================================
-
 CREATE TABLE IF NOT EXISTS fact_sentiment (
     sentiment_key BIGSERIAL PRIMARY KEY,
     ticket_key BIGINT NOT NULL,
