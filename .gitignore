@@ -217,11 +217,14 @@ __marimo__/
 # Streamlit
 .streamlit/secrets.toml
 
-# --- Power BI ---
-*.pbix
-*.pbit
-*.pbi.bak
-*.pbit
+# --- Tableau ---
+*.twbx
+*.twb
+*.tds
+*.tde
+*.hyper
+Dashboard/**/*.twbx
+Dashboard/**/*.twb
 
 # --- Data Files ---
 # Ignore all CSV and Excel files to keep the repo light

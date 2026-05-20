@@ -15,7 +15,7 @@ In the GitHub ecosystem, Developer Retention is the primary driver of platform v
 
 - NLP Engine: NLTK/VADER utilized to quantify "Sentiment Shift" across ticket lifecycles.
 
-- BI: Power BI utilizing Advanced DAX for weighted scoring and AI-driven key influencer analysis.
+- BI: we utilizing Advanced DAX for weighted scoring and AI-driven key influencer analysis.
 
 ## 🧩 Data Architecture (ERD)
 
