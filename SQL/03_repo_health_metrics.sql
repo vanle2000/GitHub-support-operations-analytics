@@ -1,8 +1,5 @@
 -- ============================================================================
--- Repository Health Metrics View - PostgreSQL
--- GitHub Support Operations Analytics
 -- Purpose: Dashboard-optimized health metrics with categorization for Tableau
--- Database: PostgreSQL 12+
 -- ============================================================================
 
 CREATE OR REPLACE VIEW v_repo_health_metrics_tableau AS 
