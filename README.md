@@ -123,15 +123,26 @@ Power BI Dashboard
 
 ---
 
-## How to Reuse / Scale
+## How to Run (Fully Reproducible — No Live Database Required)
 
-**To run this pipeline on your own GitHub data:**
-1. Clone the repo
-2. Install dependencies: `pip install -r requirements.txt`
-3. Execute SQL scripts in `/SQL` folder against your SQL Server / PostgreSQL instance
-4. Configure database connection string in notebooks (replace `YourServer/YourDB`)
-5. Run notebooks in order: `01_data_exploration.ipynb` → `02_sentiment_volatility_analysis.ipynb` → `03_risk_score_sla_prediction.ipynb`
-6. Open Power BI Desktop and connect to your database for the dashboard
+```bash
+git clone https://github.com/vanle2000/GitHub-support-operations-analytics.git
+cd GitHub-support-operations-analytics
+
+make install   # pip install -r requirements.txt + download VADER lexicon
+make data      # generate 2,000 synthetic tickets → data/raw/helpdesk_tickets.csv
+make test      # run unit test suite
+```
+
+Then open notebooks in order:
+1. `Notebooks/01_data_exploration.ipynb`
+2. `Notebooks/02_sentiment_volatility_analysis.ipynb`
+3. `Notebooks/03_risk_score_sla_prediction.ipynb`
+
+**To connect to a real database** (SQL Server / PostgreSQL), replace the SQLite path in each notebook's connection string with:
+```python
+engine = create_engine('mssql+pyodbc://YourServer/YourDB?driver=ODBC+Driver+17+for+SQL+Server')
+```
 
 **Scaling to enterprise GitHub data:**
 - Replace SQL Server with Azure Synapse Analytics or Snowflake for billion-row issue histories
