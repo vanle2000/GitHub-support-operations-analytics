@@ -1,4 +1,4 @@
-"""Unit tests for synthetic data generator and sentiment logic."""
+﻿"""Unit tests for synthetic data generator and sentiment logic."""
 
 import pytest
 import numpy as np
@@ -64,7 +64,7 @@ class TestRepoHealthDistribution:
     def test_toxic_repos_exist(self, df):
         """Some repos should have low health scores (toxic tier)."""
         toxic = (df["repo_health_score"] < 0.3).any()
-        assert toxic, "No toxic repos generated — check health score distribution"
+        assert toxic, "No toxic repos generated  -  check health score distribution"
 
 
 class TestTextGeneration:

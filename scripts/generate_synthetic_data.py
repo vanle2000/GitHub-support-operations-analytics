@@ -1,4 +1,4 @@
-"""
+﻿"""
 Generate synthetic GitHub helpdesk ticket data so notebooks run without
 a live database connection.
 
@@ -36,7 +36,7 @@ ISSUE_TEMPLATES = [
     "How do I configure {thing}? The docs are unclear.",
     "Critical: {vulnerability} allows unauthorized access to {resource}.",
     "Build fails after upgrading to v{version} with error: {error}",
-    "Performance degradation in {module} — latency increased by {pct}%",
+    "Performance degradation in {module}  -  latency increased by {pct}%",
     "Documentation for {api} is outdated and missing {feature}.",
 ]
 
@@ -106,7 +106,7 @@ def generate(n: int = N_TICKETS) -> pd.DataFrame:
             hours=int(RNG.integers(0, 24)),
         )
 
-        # Time to first response — driven by repo health
+        # Time to first response  -  driven by repo health
         ttfr_hours = max(0.5, RNG.exponential(profile["avg_ttfr_hours"]))
         first_response_at = created_at + timedelta(hours=ttfr_hours)
 
@@ -118,7 +118,7 @@ def generate(n: int = N_TICKETS) -> pd.DataFrame:
         # SLA: first response within 24h?
         sla_met = ttfr_hours <= 24
 
-        # Comment count — more comments = more complex
+        # Comment count  -  more comments = more complex
         base_comments = int(RNG.exponential(3))
         comment_count = max(0, base_comments)
 
@@ -128,7 +128,7 @@ def generate(n: int = N_TICKETS) -> pd.DataFrame:
         # Issue text
         issue_question = _random_text(ISSUE_TEMPLATES)
 
-        # Final comment — more negative if frustrated (long wait + high comments)
+        # Final comment  -  more negative if frustrated (long wait + high comments)
         frustrated = (not sla_met) and (comment_count > 3)
         final_template = NEGATIVE_TEMPLATES if frustrated and RNG.random() < 0.6 \
             else COMMENT_TEMPLATES

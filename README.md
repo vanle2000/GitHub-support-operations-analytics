@@ -1,11 +1,11 @@
-# GitHub Support Operations Analytics: Developer Experience Intelligence Platform
+﻿# GitHub Support Operations Analytics: Developer Experience Intelligence Platform
 
 ---
 
 ## Case Study
 
 ### Introduction
-GitHub hosts 100M+ repositories and processes millions of developer support interactions every year. When a developer files an issue, how quickly it gets addressed determines whether they contribute again — or quietly disappear. This project treats developer support not as a cost center but as a **retention lever**, and builds the data infrastructure to measure, predict, and optimize it.
+GitHub hosts 100M+ repositories and processes millions of developer support interactions every year. When a developer files an issue, how quickly it gets addressed determines whether they contribute again  -  or quietly disappear. This project treats developer support not as a cost center but as a **retention lever**, and builds the data infrastructure to measure, predict, and optimize it.
 
 The platform was designed to answer a question that no off-the-shelf tool answers: **Which repositories are silently destroying developer loyalty, and why?**
 
@@ -16,25 +16,25 @@ GitHub support teams had no systematic way to:
 - Predict which currently-open tickets were at highest risk of becoming SLA failures before it happened
 - Connect support performance metrics to contributor retention outcomes
 
-Without this visibility, high-traffic repositories were experiencing unmeasured developer churn — contributors who filed one issue, got a slow or frustrating response, and never came back.
+Without this visibility, high-traffic repositories were experiencing unmeasured developer churn  -  contributors who filed one issue, got a slow or frustrating response, and never came back.
 
 ### Solution
 An end-to-end analytics platform with three integrated layers:
 
-**Layer 1 — Data Infrastructure (SQL Star Schema)**
+**Layer 1  -  Data Infrastructure (SQL Star Schema)**
 - Designed a Star Schema data warehouse in SQL Server / Azure Data Studio
 - ETL pipeline using Python (SQLAlchemy) to ingest unstructured GitHub issue metadata into normalized relational tables
 - Standardized 50+ raw GitHub label tags into 4 business-critical categories: High Priority Bug, Feature Request, User Inquiry, Other
 - Tables: `Fact_Tickets`, `Dim_Repositories`, `Dim_Authors`, `Fact_Sentiment`, `Risk_Scores`
 
-**Layer 2 — NLP Sentiment Analysis (VADER)**
-- Selected VADER (Valence Aware Dictionary and sEntiment Reasoner) for its high performance on technical/social shorthand — outperforms transformer models on short-form text at a fraction of compute cost
+**Layer 2  -  NLP Sentiment Analysis (VADER)**
+- Selected VADER (Valence Aware Dictionary and sEntiment Reasoner) for its high performance on technical/social shorthand  -  outperforms transformer models on short-form text at a fraction of compute cost
 - Computed `Initial_Sentiment` (first issue text) and `Final_Sentiment` (last comment text) per ticket
 - Engineered `Sentiment_Shift` = Final − Initial to measure emotional trajectory
 - Flagged "frustrated users": tickets where initial sentiment was neutral/positive but final sentiment dropped below −0.5
 - Output written back to `Fact_Sentiment` table for dashboard consumption
 
-**Layer 3 — Real-Time SLA Risk Scoring**
+**Layer 3  -  Real-Time SLA Risk Scoring**
 - Statistical risk model scoring all currently open tickets every hour
 - Risk formula: `Breach_Probability = (Time_Risk × 0.5) + (Comment_Risk × 0.3) + (Label_Weight × 0.2)`
   - Time risk: hours elapsed / 24h SLA threshold
@@ -111,19 +111,19 @@ Power BI Dashboard
 
 ## Key Insights & Analytics
 
-1. **12% of repositories are "Toxic"** — high traffic, SLA-failing, driving permanent contributor loss. Identified via the Weighted Health Score matrix.
+1. **12% of repositories are "Toxic"**  -  high traffic, SLA-failing, driving permanent contributor loss. Identified via the Weighted Health Score matrix.
 
-2. **The 12-Hour Golden Hour** — first response within 12 hours predicts a 3.5x lift in repeat contributions. This is not a correlation: it is the single most actionable threshold for support team prioritization.
+2. **The 12-Hour Golden Hour**  -  first response within 12 hours predicts a 3.5x lift in repeat contributions. This is not a correlation: it is the single most actionable threshold for support team prioritization.
 
-3. **Sentiment degrades with ticket complexity** — tickets requiring >3 rounds of comments show 40% higher negative sentiment shift, regardless of whether the bug was eventually fixed. This means *how* issues are handled matters as much as *whether* they are resolved.
+3. **Sentiment degrades with ticket complexity**  -  tickets requiring >3 rounds of comments show 40% higher negative sentiment shift, regardless of whether the bug was eventually fixed. This means *how* issues are handled matters as much as *whether* they are resolved.
 
-4. **Security and vulnerability labels carry inherent risk** — given a 1.5× weight in the SLA breach model. These tickets escalate fast; every hour of delay compounds reputational risk.
+4. **Security and vulnerability labels carry inherent risk**  -  given a 1.5× weight in the SLA breach model. These tickets escalate fast; every hour of delay compounds reputational risk.
 
-5. **Label normalization unlocked analytics** — consolidating 50+ raw GitHub tags into 4 business categories reduced label cardinality from unusable to actionable. Without this normalization, no cross-repo comparison was possible.
+5. **Label normalization unlocked analytics**  -  consolidating 50+ raw GitHub tags into 4 business categories reduced label cardinality from unusable to actionable. Without this normalization, no cross-repo comparison was possible.
 
 ---
 
-## How to Run (Fully Reproducible — No Live Database Required)
+## How to Run (Fully Reproducible  -  No Live Database Required)
 
 ```bash
 git clone https://github.com/vanle2000/GitHub-support-operations-analytics.git
