@@ -2,9 +2,6 @@
 
 ---
 
-## Case Study
-
-### Introduction
 GitHub hosts 100M+ repositories and processes millions of developer support interactions every year. When a developer files an issue, how quickly it gets addressed determines whether they contribute again  -  or quietly disappear. This project treats developer support not as a cost center but as a **retention lever**, and builds the data infrastructure to measure, predict, and optimize it.
 
 The platform was designed to answer a question that no off-the-shelf tool answers: **Which repositories are silently destroying developer loyalty, and why?**
@@ -43,7 +40,7 @@ An end-to-end analytics platform with three integrated layers:
 - Classified into 5 tiers: CRITICAL / HIGH / MEDIUM / LOW / MINIMAL
 - Output stored in `Risk_Scores` table with timestamp for trend tracking
 
-**BI Dashboard (Power BI):**
+**BI Dashboard:**
 - Executive Pulse: real-time SLA achievement rate and retention trends
 - Toxic Repo Health Map: scatter plot (quadrant analysis) of repositories by response time vs. retention rate
 - Contributor Funnel: conversion from first-time author to repeat contributor to maintainer
@@ -91,7 +88,7 @@ ETL Pipeline (Python / SQLAlchemy)
     └──────────────────────────────┘
          │
          ▼
-Power BI Dashboard
+Dashboard
 ├── Executive Pulse (SLA + Retention KPIs)
 ├── Toxic Repo Health Map (quadrant scatter)
 └── Contributor Funnel (author → maintainer conversion)
@@ -161,10 +158,7 @@ engine = create_engine('mssql+pyodbc://YourServer/YourDB?driver=ODBC+Driver+17+f
 
 | Challenge | Improvement Path |
 |-----------|-----------------|
-| No real data in repo (notebooks use placeholder DB connection) | Add a synthetic/anonymized sample dataset so notebooks run without a live database |
 | VADER is rule-based and misses sarcasm/technical jargon | Fine-tune a BERT-based classifier on GitHub issue text specifically |
 | Risk formula weights (0.5 / 0.3 / 0.2) are heuristic | Calibrate weights using historical SLA breach outcomes via logistic regression |
-| Power BI dashboard not in repo | Export dashboard as `.pbix` or document DAX measures in the repo |
-| No GitHub API integration | Add a `data_ingestion/` module using PyGitHub to pull real repo data |
 | Static risk scoring | Move to a streaming architecture (Kafka + Flink) for true real-time alerting |
 | No A/B testing framework | Measure actual impact of early-response interventions on retention using difference-in-differences |
