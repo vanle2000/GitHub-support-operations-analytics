@@ -16,7 +16,6 @@ OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
 
 RNG = np.random.default_rng(42)
 
-# ── Config ──────────────────────────────────────────────────────────────
 N_TICKETS = 2_000
 N_REPOS = 40
 N_AUTHORS = 500
